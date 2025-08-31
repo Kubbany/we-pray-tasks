@@ -3,6 +3,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:we_pray_tasks/core/services/qibla_service.dart';
+import 'package:we_pray_tasks/features/qibla/domain/entities/location_entity.dart';
 
 class QiblaServiceImpl implements QiblaService {
   @override
