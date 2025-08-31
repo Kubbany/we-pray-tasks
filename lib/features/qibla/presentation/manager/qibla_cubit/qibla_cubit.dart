@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_compass/flutter_compass.dart';
+import 'package:we_pray_tasks/constants.dart';
 import 'package:we_pray_tasks/features/qibla/domain/entities/location_entity.dart';
 import 'package:we_pray_tasks/features/qibla/domain/repos/qibla_repo.dart';
 
@@ -33,12 +34,12 @@ class QiblaCubit extends Cubit<QiblaState> {
   void _listenToCompass(double qiblaDirection, LocationEntity location) {
     _compassSubscription?.cancel();
 
-    DateTime lastEmit = DateTime.now().subtract(const Duration(microseconds: 600));
+    DateTime lastEmit = DateTime.now().subtract(kRequestDuration);
 
     _compassSubscription = FlutterCompass.events?.listen(
       (event) {
         final now = DateTime.now();
-        if (now.difference(lastEmit) >= const Duration(milliseconds: 600)) {
+        if (now.difference(lastEmit) >= kRequestDuration) {
           lastEmit = now;
           final heading = event.heading ?? 0.0;
           emit(

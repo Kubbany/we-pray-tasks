@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:we_pray_tasks/core/utils/app_styles.dart';
 import 'package:we_pray_tasks/core/utils/widgets/custom_body_container.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/header_widget.dart';
-import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/location_widget.dart';
+import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/location_widget_bloc_builder.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/qibla_compass_bloc_consumer.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/qibla_degree_direction.dart';
 
@@ -25,7 +25,7 @@ class QiblaViewBody extends StatelessWidget {
                 const SizedBox(
                   height: 14,
                 ),
-                const LocationWidget(),
+                const LocationWidgetBlocBuilder(),
                 const SizedBox(
                   height: 68,
                 ),
