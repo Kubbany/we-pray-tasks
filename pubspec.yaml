@@ -28,6 +28,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_bloc: ^9.1.1
+  flutter_compass: ^0.8.1
+  geocoding: ^4.0.0
+  geolocator: ^14.0.2
+  get_it: ^8.2.0
+  dartz: ^0.10.1
+  adhan: ^2.0.0+1
+  svg_flutter: ^0.0.1
   flutter:
     sdk: flutter
 
@@ -58,8 +66,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -87,3 +95,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/utils/
+  filename: app_images.dart
+  field_prefix: null
