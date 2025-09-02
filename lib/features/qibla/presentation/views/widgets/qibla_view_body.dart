@@ -11,9 +11,9 @@ class QiblaViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: <Widget>[
-        const HeaderWidget(title: 'Qibla Compass'),
+        HeaderWidget(title: 'Qibla Compass'),
         Expanded(
           child: CustomBodyContainer(
             child: Column(
@@ -22,18 +22,18 @@ class QiblaViewBody extends StatelessWidget {
                   'Find your qibla direction',
                   style: AppStyles.mediumHanken19,
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 14,
                 ),
-                const LocationWidgetBlocBuilder(),
-                const SizedBox(
+                LocationWidgetBlocBuilder(),
+                SizedBox(
                   height: 68,
                 ),
-                const QiblaCompassBlocConsumer(),
-                const SizedBox(
+                QiblaCompassBlocConsumer(),
+                SizedBox(
                   height: 32,
                 ),
-                const QiblaDegreeDicrection(),
+                QiblaDegreeDicrection(),
               ],
             ),
           ),

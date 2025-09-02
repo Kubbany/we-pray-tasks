@@ -9,10 +9,10 @@ class QiblaDegreeDicrection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       spacing: 16,
       children: [
-        const QiblaDirectionBlocBuilder(),
+        QiblaDirectionBlocBuilder(),
         Text(
           'Rotate your phone to get your qibla direction',
           style: AppStyles.mediumSans14,

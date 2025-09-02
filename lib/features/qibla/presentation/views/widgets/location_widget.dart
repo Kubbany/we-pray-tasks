@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:we_pray_tasks/core/utils/app_styles.dart';
-
-import '../../manager/location_cubit/location_cubit.dart';
+import 'package:we_pray_tasks/core/utils/widgets/location_city_name.dart';
+import 'package:we_pray_tasks/features/qibla/presentation/manager/location_cubit/location_cubit.dart';
 
 class LocationWidget extends StatelessWidget {
   const LocationWidget({
@@ -30,23 +29,7 @@ class LocationWidget extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 4,
-            children: <Widget>[
-              const Icon(
-                Icons.location_on,
-                color: Color(0xFF262626),
-              ),
-              Expanded(
-                child: Text(
-                  text,
-                  style: AppStyles.mediumSans14,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
+          child: LocationCityName(text: text),
         ),
       ),
     );
