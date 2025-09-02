@@ -41,7 +41,7 @@ class LocationWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   text,
-                  style: AppStyles.medium14,
+                  style: AppStyles.mediumSans14,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

@@ -15,7 +15,7 @@ class QiblaDegreeDicrection extends StatelessWidget {
         const QiblaDirectionBlocBuilder(),
         Text(
           'Rotate your phone to get your qibla direction',
-          style: AppStyles.medium14,
+          style: AppStyles.mediumSans14,
         ),
       ],
     );

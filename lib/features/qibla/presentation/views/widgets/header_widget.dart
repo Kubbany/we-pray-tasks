@@ -11,7 +11,7 @@ class HeaderWidget extends StatelessWidget {
       child: Center(
         child: Text(
           title,
-          style: AppStyles.semiBold19,
+          style: AppStyles.semiBoldHanken19,
         ),
       ),
     );

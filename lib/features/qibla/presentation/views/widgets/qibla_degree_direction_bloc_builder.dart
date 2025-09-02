@@ -24,12 +24,12 @@ class QiblaDirectionBlocBuilder extends StatelessWidget {
           }
           return Text(
             text,
-            style: AppStyles.medium19,
+            style: AppStyles.mediumHanken19,
           );
         } else if (state is QiblaFailure) {
           return Text(
             'Error loading Qibla direction',
-            style: AppStyles.medium14.copyWith(color: Colors.red),
+            style: AppStyles.mediumSans14.copyWith(color: Colors.red),
           );
         }
         return const SizedBox();

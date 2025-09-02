@@ -20,7 +20,7 @@ class QiblaViewBody extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Find your qibla direction',
-                  style: AppStyles.medium19,
+                  style: AppStyles.mediumHanken19,
                 ),
                 const SizedBox(
                   height: 14,
