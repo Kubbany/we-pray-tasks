@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:we_pray_tasks/constants.dart';
+import 'package:we_pray_tasks/core/utils/repos/location_repo/location_repo.dart';
 import 'package:we_pray_tasks/features/qibla/domain/entities/location_entity.dart';
 import 'package:we_pray_tasks/features/qibla/domain/repos/qibla_repo.dart';
 
@@ -10,14 +11,15 @@ part 'qibla_state.dart';
 
 class QiblaCubit extends Cubit<QiblaState> {
   final QiblaRepo _qiblaRepo;
+  final LocationRepo _locationRepo;
   StreamSubscription<CompassEvent>? _compassSubscription;
 
-  QiblaCubit(this._qiblaRepo) : super(QiblaInitial());
+  QiblaCubit(this._qiblaRepo, this._locationRepo) : super(QiblaInitial());
 
   Future<void> getQiblaDirection() async {
     emit(QiblaLoading());
 
-    final locationResult = await _qiblaRepo.getLocation();
+    final locationResult = await _locationRepo.getLocation();
 
     locationResult.fold(
       (failure) => emit(QiblaFailure(failure.message)),

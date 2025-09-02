@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:we_pray_tasks/features/qibla/domain/repos/qibla_repo.dart';
+import 'package:we_pray_tasks/core/utils/repos/location_repo/location_repo.dart';
 
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
-  LocationCubit(this._qiblaRepo) : super(LocationInitial());
-  final QiblaRepo _qiblaRepo;
+  LocationCubit(this._locationRepo) : super(LocationInitial());
+  final LocationRepo _locationRepo;
 
   Future<void> getCityName() async {
     emit(LocationLoading());
 
-    final location = await _qiblaRepo.getLocation();
+    final location = await _locationRepo.getLocation();
     location.fold(
       (failure) {
         emit(LocationFailure(failure.message));
       },
       (location) async {
-        final place = await _qiblaRepo.getCityName(location);
+        final place = await _locationRepo.getCityName(location);
         place.fold(
           (failure) {
             emit(LocationFailure(failure.message));
