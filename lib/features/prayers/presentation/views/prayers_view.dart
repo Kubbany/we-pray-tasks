@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:we_pray_tasks/constants.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/prayers_view_body.dart';
 
 class PrayersView extends StatelessWidget {
@@ -7,6 +8,7 @@ class PrayersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: kSecondaryColor,
       body: PrayersViewBody(),
     );
   }
