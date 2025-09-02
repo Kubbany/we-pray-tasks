@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:we_pray_tasks/core/utils/widgets/custom_body_container.dart';
+import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/date_picker.dart';
 
 class PrayersTimeSection extends StatelessWidget {
   const PrayersTimeSection({
@@ -8,11 +9,11 @@ class PrayersTimeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomBodyContainer(
+    return CustomBodyContainer(
       child: Column(
         children: [
-          SizedBox(
-            height: 37,
+          DatePicker(
+            onDateChanged: (date) {},
           ),
         ],
       ),
