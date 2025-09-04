@@ -6,7 +6,7 @@ import 'package:we_pray_tasks/features/prayers/domain/entities/prayer_entity.dar
 
 class PrayersServiceImpl implements PrayersService {
   String _formatTime(DateTime dateTime) {
-    return DateFormat('hh:mm a').format(dateTime);
+    return DateFormat('h.mma').format(dateTime).toLowerCase();
   }
 
   @override
