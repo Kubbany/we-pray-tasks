@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_cubit.dart';
+import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_state.dart';
+import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/prayers_time_list_view.dart';
+import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/skeletonizer_prayers.dart';
+
+class PrayerTimeListViewBlocBuilder extends StatefulWidget {
+  const PrayerTimeListViewBlocBuilder({super.key});
+
+  @override
+  State<PrayerTimeListViewBlocBuilder> createState() => _PrayerTimeListViewBlocBuilderState();
+}
+
+class _PrayerTimeListViewBlocBuilderState extends State<PrayerTimeListViewBlocBuilder> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<PrayersCubit>().getPrayers(DateTime.now());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PrayersCubit, PrayersState>(
+      builder: (context, state) {
+        if (state is PrayersFailure) {
+          Center(child: Text(state.message));
+        } else if (state is PrayersSuccess) {
+          return PrayersTimeListView(
+            prayers: state.prayers,
+          );
+        } else if (state is PrayersLoading) {
+          return const SkeletonizerPrayers();
+        }
+        return const SizedBox();
+      },
+    );
+  }
+}
