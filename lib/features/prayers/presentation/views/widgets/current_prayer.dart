@@ -4,26 +4,33 @@ import 'package:we_pray_tasks/core/utils/app_styles.dart';
 class CurrentPrayer extends StatelessWidget {
   const CurrentPrayer({
     super.key,
+    required this.prayerName,
+    required this.time,
+    required this.period,
   });
+
+  final String prayerName;
+  final String time;
+  final String period;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       spacing: 20,
       children: [
         Text(
-          'Isha',
+          prayerName,
           style: AppStyles.regularHanken28,
         ),
         Text.rich(
           TextSpan(
             children: [
               TextSpan(
-                text: '8:30',
+                text: time,
                 style: AppStyles.mediumSans32,
               ),
               TextSpan(
-                text: 'pm',
+                text: period,
                 style: AppStyles.mediumSans24,
               ),
             ],

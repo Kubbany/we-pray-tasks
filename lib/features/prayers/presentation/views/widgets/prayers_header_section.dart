@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:we_pray_tasks/core/utils/app_styles.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/current_location.dart';
-import 'current_prayer_widget.dart';
+import 'current_prayer_bloc_builder.dart';
 
 class CurrentPrayerSection extends StatelessWidget {
   const CurrentPrayerSection({super.key});
@@ -28,7 +28,7 @@ class CurrentPrayerSection extends StatelessWidget {
         SizedBox(
           height: 30,
         ),
-        CurrentPrayer(),
+        CurrentPrayerBlocBuilder(),
       ],
     );
   }

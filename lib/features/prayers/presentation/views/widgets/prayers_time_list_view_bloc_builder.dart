@@ -23,6 +23,8 @@ class _PrayerTimeListViewBlocBuilderState extends State<PrayerTimeListViewBlocBu
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PrayersCubit, PrayersState>(
+      buildWhen: (previous, current) =>
+          current is PrayersSuccess || current is PrayersFailure || current is PrayersLoading,
       builder: (context, state) {
         if (state is PrayersFailure) {
           Center(child: Text(state.message));

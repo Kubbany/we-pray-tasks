@@ -13,14 +13,27 @@ class PrayersRepoImpl implements PrayersRepo {
   );
 
   @override
-  Future<Either<Failure, List<PrayerEntity>>> getDatePrayers({
+  Either<Failure, List<PrayerEntity>> getDatePrayers({
     required DateTime date,
     required Coordinates coordinates,
-  }) async {
+  }) {
     try {
-      final prayers = await prayersService.getDatePrayers(date, coordinates);
+      final prayers = prayersService.getDatePrayers(date, coordinates);
 
       return Right(prayers);
+    } catch (e) {
+      return const Left(UnknownFailure('Could not get prayers'));
+    }
+  }
+
+  @override
+  Either<Failure, PrayerEntity> getCurrentPrayer({
+    required Coordinates coordinates,
+  }) {
+    try {
+      final currentPrayer = prayersService.getCurrentPrayer(coordinates);
+
+      return Right(currentPrayer);
     } catch (e) {
       return const Left(UnknownFailure('Could not get prayers'));
     }

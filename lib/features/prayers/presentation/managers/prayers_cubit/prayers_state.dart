@@ -31,10 +31,30 @@ final class PrayersSuccess extends PrayersState {
   List<Object?> get props => [prayers, date];
 }
 
+final class CurrentPrayerLoading extends PrayersState {
+  const CurrentPrayerLoading();
+}
+
+class CurrentPrayerSuccess extends PrayersState {
+  final PrayerEntity prayer;
+  const CurrentPrayerSuccess(this.prayer);
+  @override
+  List<Object?> get props => [prayer];
+}
+
 final class PrayersFailure extends PrayersState {
   final String message;
 
   const PrayersFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+final class CurrentPrayerFailure extends PrayersState {
+  final String message;
+
+  const CurrentPrayerFailure(this.message);
 
   @override
   List<Object?> get props => [message];

@@ -10,7 +10,7 @@ class PrayersServiceImpl implements PrayersService {
   }
 
   @override
-  Future<List<PrayerEntity>> getDatePrayers(DateTime date, Coordinates coordinates) async {
+  List<PrayerEntity> getDatePrayers(DateTime date, Coordinates coordinates) {
     final params = CalculationMethod.muslim_world_league.getParameters();
     final dateComponents = DateComponents.from(date.toLocal());
     final prayerTimes = PrayerTimes(coordinates, dateComponents, params);
@@ -39,5 +39,36 @@ class PrayersServiceImpl implements PrayersService {
     ];
 
     return prayers;
+  }
+
+  @override
+  PrayerEntity getCurrentPrayer(Coordinates coords) {
+    final params = CalculationMethod.muslim_world_league.getParameters();
+    final prayerTimes = PrayerTimes.today(coords, params);
+
+    Prayer prayer = prayerTimes.nextPrayer();
+    if (prayer == Prayer.none) prayer = Prayer.isha;
+
+    return PrayerEntity(
+      name: _mapName(prayer),
+      time: _formatTime(prayerTimes.timeForPrayer(prayer)!),
+    );
+  }
+
+  String _mapName(Prayer prayer) {
+    switch (prayer) {
+      case Prayer.fajr:
+        return 'Fajr';
+      case Prayer.dhuhr:
+        return DateTime.now().weekday == DateTime.friday ? 'Jumu\'a' : 'Duhur';
+      case Prayer.asr:
+        return 'Asr';
+      case Prayer.maghrib:
+        return 'Maghrib';
+      case Prayer.isha:
+        return 'Isha';
+      default:
+        return 'Unknown';
+    }
   }
 }
