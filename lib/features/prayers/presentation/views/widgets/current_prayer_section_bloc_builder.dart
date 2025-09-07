@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeletonizer/skeletonizer.dart';
-import 'package:we_pray_tasks/features/prayers/domain/entities/current_prayer_entity.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_cubit.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_state.dart';
+import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/skeletonizer_current_prayer.dart';
 
 import 'current_prayer_section.dart';
 
@@ -34,16 +33,7 @@ class _CurrentPrayerSectionBlocBuilderState extends State<CurrentPrayerSectionBl
         } else if (state is CurrentPrayerFailure) {
           return Center(child: Text(state.message));
         } else if (state is CurrentPrayerLoading) {
-          return Skeletonizer(
-            child: CurrentPrayerSection(
-              prayer: CurrentPrayerEntity(
-                name: 'Fajr',
-                time: '5:30',
-                period: 'am',
-                color: Colors.transparent,
-              ),
-            ),
-          );
+          return const SkeletonizerCurrentPrayer();
         }
         return const SizedBox();
       },
