@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+import 'package:we_pray_tasks/features/prayers/domain/entities/current_prayer_entity.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_cubit.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_state.dart';
-import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/current_prayer.dart';
 
-class CurrentPrayerBlocBuilder extends StatefulWidget {
-  const CurrentPrayerBlocBuilder({
-    super.key,
-  });
+import 'current_prayer_section.dart';
+
+class CurrentPrayerSectionBlocBuilder extends StatefulWidget {
+  const CurrentPrayerSectionBlocBuilder({super.key});
 
   @override
-  State<CurrentPrayerBlocBuilder> createState() => _CurrentPrayerBlocBuilderState();
+  State<CurrentPrayerSectionBlocBuilder> createState() => _CurrentPrayerSectionBlocBuilderState();
 }
 
-class _CurrentPrayerBlocBuilderState extends State<CurrentPrayerBlocBuilder> {
+class _CurrentPrayerSectionBlocBuilderState extends State<CurrentPrayerSectionBlocBuilder> {
   @override
-  void initState() {
+  initState() {
     super.initState();
     context.read<PrayersCubit>().getCurrentPrayer();
   }
@@ -27,16 +28,20 @@ class _CurrentPrayerBlocBuilderState extends State<CurrentPrayerBlocBuilder> {
           current is CurrentPrayerSuccess || current is CurrentPrayerLoading || current is CurrentPrayerFailure,
       builder: (context, state) {
         if (state is CurrentPrayerSuccess) {
-          final prayer = state.prayer;
-          final time = prayer.time.substring(0, prayer.time.length - 2);
-          final period = prayer.time.substring(prayer.time.length - 2);
-          return CurrentPrayer(prayerName: prayer.name, time: time, period: period);
+          return CurrentPrayerSection(
+            prayer: state.prayer,
+          );
         } else if (state is CurrentPrayerFailure) {
           return Center(child: Text(state.message));
         } else if (state is CurrentPrayerLoading) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.white,
+          return Skeletonizer(
+            child: CurrentPrayerSection(
+              prayer: CurrentPrayerEntity(
+                name: 'Fajr',
+                time: '5:30',
+                period: 'am',
+                color: Colors.transparent,
+              ),
             ),
           );
         }

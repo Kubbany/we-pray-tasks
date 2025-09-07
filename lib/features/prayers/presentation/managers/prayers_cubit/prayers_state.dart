@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:we_pray_tasks/features/prayers/domain/entities/current_prayer_entity.dart';
 import 'package:we_pray_tasks/features/prayers/domain/entities/prayer_entity.dart';
 
 @immutable
@@ -36,7 +37,7 @@ final class CurrentPrayerLoading extends PrayersState {
 }
 
 class CurrentPrayerSuccess extends PrayersState {
-  final PrayerEntity prayer;
+  final CurrentPrayerEntity prayer;
   const CurrentPrayerSuccess(this.prayer);
   @override
   List<Object?> get props => [prayer];

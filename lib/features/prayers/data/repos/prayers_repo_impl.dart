@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:adhan/adhan.dart';
 import 'package:we_pray_tasks/core/errors/failure.dart';
 import 'package:we_pray_tasks/core/services/prayers_service/prayers_service.dart';
+import 'package:we_pray_tasks/features/prayers/domain/entities/current_prayer_entity.dart';
 import 'package:we_pray_tasks/features/prayers/domain/entities/prayer_entity.dart';
 import 'package:we_pray_tasks/features/prayers/domain/repos/prayers_repo.dart';
 
@@ -27,7 +28,7 @@ class PrayersRepoImpl implements PrayersRepo {
   }
 
   @override
-  Either<Failure, PrayerEntity> getCurrentPrayer({
+  Either<Failure, CurrentPrayerEntity> getCurrentPrayer({
     required Coordinates coordinates,
   }) {
     try {

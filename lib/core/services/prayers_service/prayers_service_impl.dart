@@ -1,7 +1,8 @@
-// lib/features/prayers/data/services/prayers_service_impl.dart
 import 'package:adhan/adhan.dart';
 import 'package:intl/intl.dart';
+import 'package:we_pray_tasks/constants.dart';
 import 'package:we_pray_tasks/core/services/prayers_service/prayers_service.dart';
+import 'package:we_pray_tasks/features/prayers/domain/entities/current_prayer_entity.dart';
 import 'package:we_pray_tasks/features/prayers/domain/entities/prayer_entity.dart';
 
 class PrayersServiceImpl implements PrayersService {
@@ -42,33 +43,62 @@ class PrayersServiceImpl implements PrayersService {
   }
 
   @override
-  PrayerEntity getCurrentPrayer(Coordinates coords) {
+  CurrentPrayerEntity getCurrentPrayer(Coordinates coordinates) {
     final params = CalculationMethod.muslim_world_league.getParameters();
-    final prayerTimes = PrayerTimes.today(coords, params);
+    final prayerTimes = PrayerTimes.today(coordinates, params);
 
     Prayer prayer = prayerTimes.nextPrayer();
     if (prayer == Prayer.none) prayer = Prayer.isha;
-
-    return PrayerEntity(
-      name: _mapName(prayer),
-      time: _formatTime(prayerTimes.timeForPrayer(prayer)!),
-    );
+    final formattedTime = DateFormat('h:mma').format(prayerTimes.timeForPrayer(prayer)!).toLowerCase();
+    return _mapPrayer(prayer, formattedTime);
   }
 
-  String _mapName(Prayer prayer) {
+  CurrentPrayerEntity _mapPrayer(Prayer prayer, String formattedTime) {
+    final time = formattedTime.substring(0, formattedTime.length - 2);
+    final period = formattedTime.substring(formattedTime.length - 2);
     switch (prayer) {
       case Prayer.fajr:
-        return 'Fajr';
+        return CurrentPrayerEntity(
+          name: 'Fajr',
+          time: time,
+          period: period,
+          color: kFajrColor,
+        );
       case Prayer.dhuhr:
-        return DateTime.now().weekday == DateTime.friday ? 'Jumu\'a' : 'Duhur';
+        return CurrentPrayerEntity(
+          name: DateTime.now().weekday == DateTime.friday ? 'Jumu\'a' : 'Duhur',
+          time: time,
+          period: period,
+          color: kDuhurColor,
+        );
       case Prayer.asr:
-        return 'Asr';
+        return CurrentPrayerEntity(
+          name: 'Asr',
+          time: time,
+          period: period,
+          color: kAsrColor,
+        );
       case Prayer.maghrib:
-        return 'Maghrib';
+        return CurrentPrayerEntity(
+          name: 'Maghrib',
+          time: time,
+          period: period,
+          color: kMaghribColor,
+        );
       case Prayer.isha:
-        return 'Isha';
+        return CurrentPrayerEntity(
+          name: 'Isha',
+          time: time,
+          period: period,
+          color: kIshaColor,
+        );
       default:
-        return 'Unknown';
+        return CurrentPrayerEntity(
+          name: 'Isha',
+          time: time,
+          period: period,
+          color: kIshaColor,
+        );
     }
   }
 }
