@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_cubit.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cubit/prayers_state.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/current_prayer.dart';
-import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/skeletonizer_current_prayer.dart';
 
 class CurrentPrayerBlocBuilder extends StatefulWidget {
   const CurrentPrayerBlocBuilder({
@@ -35,7 +34,11 @@ class _CurrentPrayerBlocBuilderState extends State<CurrentPrayerBlocBuilder> {
         } else if (state is CurrentPrayerFailure) {
           return Center(child: Text(state.message));
         } else if (state is CurrentPrayerLoading) {
-          return const SkeletonizerCurrentPrayer();
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          );
         }
         return const SizedBox();
       },

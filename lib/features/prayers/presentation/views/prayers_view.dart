@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:we_pray_tasks/constants.dart';
 import 'package:we_pray_tasks/core/utils/cubits/location_cubit/location_cubit.dart';
 import 'package:we_pray_tasks/core/utils/repos/location_repo/location_repo.dart';
 import 'package:we_pray_tasks/core/utils/service_locator.dart';
@@ -28,7 +27,6 @@ class PrayersView extends StatelessWidget {
         ),
       ],
       child: const Scaffold(
-        backgroundColor: kSecondaryColor,
         body: PrayersViewBody(),
       ),
     );
