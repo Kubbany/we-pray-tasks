@@ -13,6 +13,11 @@ class AppStyles {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle semiBoldHanken11 = TextStyle(
+    fontFamily: 'Hanken Grotesk',
+    fontSize: 11,
+    fontWeight: FontWeight.w600,
+  );
   static const TextStyle regularHanken28 = TextStyle(
     color: Colors.white,
     fontFamily: 'Hanken Grotesk',

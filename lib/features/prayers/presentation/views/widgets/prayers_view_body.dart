@@ -15,7 +15,7 @@ class PrayersViewBody extends StatelessWidget {
             children: [
               const CurrentPrayerSectionBlocBuilder(),
               Transform.translate(
-                offset: Offset(0, -MediaQuery.sizeOf(context).height * 0.07),
+                offset: Offset(0, -MediaQuery.sizeOf(context).height * 0.1208),
                 child: const PrayersTimeSection(),
               ),
             ],

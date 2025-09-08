@@ -21,7 +21,8 @@ class CustomJameaBackgroundContainer extends StatelessWidget {
             image: AssetImage(
               Assets.imagesJameaPng,
             ),
-            fit: BoxFit.fill,
+            alignment: Alignment.topCenter,
+            fit: BoxFit.contain,
           ),
         ),
         child: child,

@@ -19,7 +19,7 @@ class CurrentPrayerSection extends StatelessWidget {
       child: Column(
         children: <Widget>[
           const SizedBox(
-            height: 84,
+            height: 41,
           ),
           const Text(
             'Prayers Times',

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/views/prayers_view.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/views/qibla_view.dart';
+import 'package:we_pray_tasks/home.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case Home.routeName:
+      return MaterialPageRoute(builder: (context) => const Home());
     case QiblaView.routeName:
       return MaterialPageRoute(builder: (context) => const QiblaView());
     case PrayersView.routeName:
