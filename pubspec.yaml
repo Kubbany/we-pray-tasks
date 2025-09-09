@@ -83,6 +83,8 @@ flutter:
           weight: 500
         - asset: assets/fonts/HankenGrotesk-SemiBold.ttf
           weight: 600
+        - asset: assets/fonts/HankenGrotesk-Bold.ttf
+          weight: 700
         - asset: assets/fonts/HankenGrotesk-Regular.ttf
           weight: 400
     - family: DM Sans

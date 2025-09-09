@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppStyles {
+  static const TextStyle boldHanken16 = TextStyle(
+    color: Colors.white,
+    fontFamily: 'Hanken Grotesk',
+    fontSize: 19,
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle semiBoldHanken19 = TextStyle(
     color: Colors.white,
     fontFamily: 'Hanken Grotesk',
@@ -22,6 +28,12 @@ class AppStyles {
     color: Colors.white,
     fontFamily: 'Hanken Grotesk',
     fontSize: 28,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle regularHanken16 = TextStyle(
+    color: Color(0xFF434343),
+    fontFamily: 'Hanken Grotesk',
+    fontSize: 16,
     fontWeight: FontWeight.w400,
   );
   static const TextStyle mediumHanken19 = TextStyle(

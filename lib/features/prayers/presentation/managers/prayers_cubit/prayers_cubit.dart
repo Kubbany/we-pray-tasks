@@ -39,7 +39,7 @@ class PrayersCubit extends Cubit<PrayersState> {
   Future<void> _updateCurrentPrayer() async {
     emit(const CurrentPrayerLoading());
     final location = await _getLocation();
-    if (location == null) return;
+    if (location == null) return emit(const PrayersFailure('No location'));
 
     final result = prayersRepo.getCurrentPrayer(
       coordinates: Coordinates(location.latitude, location.longitude),

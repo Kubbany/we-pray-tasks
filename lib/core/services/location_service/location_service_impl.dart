@@ -19,7 +19,8 @@ class LocationServiceImpl implements LocationService {
   Future<String> getCityName(LocationEntity location) async {
     final placemarks = await placemarkFromCoordinates(location.latitude, location.longitude);
 
-    final cityName = "${placemarks.first.locality ?? ''}, ${placemarks.first.country ?? ''}".trim();
+    final cityName =
+        "${placemarks.first.locality ?? 'Unknown Location'}, ${placemarks.first.country ?? 'Unknown Country'}".trim();
 
     return cityName;
   }
