@@ -5,12 +5,15 @@ import 'package:we_pray_tasks/core/utils/service_locator.dart';
 import 'package:we_pray_tasks/features/prayers/domain/entities/prayer_entity.dart';
 import 'package:we_pray_tasks/home.dart';
 
+import 'core/services/shared_prefs.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
   Hive.registerAdapter(PrayerEntityAdapter());
   setupServiceLocator();
+  await SharedPrefs.init();
   runApp(const WePrayTasks());
 }
 

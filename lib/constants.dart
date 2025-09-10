@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kRequestDuration = Duration(milliseconds: 100);
+const kLocationAccessKey = 'location_access';
 const kPrimaryColor = Color(0xFF28B16D);
 const kUnselectedColor = Color(0xFF434343);
 const kFajrColor = Color(0xFF00468C);
