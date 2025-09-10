@@ -7,6 +7,8 @@ class LocationInitial extends LocationState {}
 
 class LocationLoading extends LocationState {}
 
+class LocationPermissionSuccess extends LocationState {}
+
 class LocationSuccess extends LocationState {
   final String place;
   LocationSuccess(this.place);

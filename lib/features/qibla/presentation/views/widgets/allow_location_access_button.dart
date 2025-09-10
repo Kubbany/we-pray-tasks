@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:we_pray_tasks/constants.dart';
 import 'package:we_pray_tasks/core/utils/app_styles.dart';
+import 'package:we_pray_tasks/core/utils/cubits/location_cubit/location_cubit.dart';
 
 class AllowLocationAccessButton extends StatelessWidget {
   const AllowLocationAccessButton({
@@ -22,7 +24,9 @@ class AllowLocationAccessButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        context.read<LocationCubit>().checkLocationPermission();
+      },
       child: const Text(
         'Allow Location Access',
         style: AppStyles.boldHanken16,
