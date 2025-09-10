@@ -31,18 +31,20 @@ class LocationCubit extends Cubit<LocationState> {
     );
   }
 
-  Future<void> checkLocationPermission() async {
+  Future<void> requestLocationPermission() async {
+    final permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+      SharedPrefs.setBool(kLocationAccessKey, false);
+      emit(LocationPermissionFailure('Location permission denied, Allow it and try again.'));
+    } else if (permission == LocationPermission.whileInUse || permission == LocationPermission.always) {
+      SharedPrefs.setBool(kLocationAccessKey, true);
+      emit(LocationPermissionSuccess());
+    }
+  }
+
+  void checkLocationPermission() {
     final bool isLocationAllowed = SharedPrefs.getBool(kLocationAccessKey);
-    if (!isLocationAllowed) {
-      final permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
-        SharedPrefs.setBool(kLocationAccessKey, false);
-        emit(LocationPermissionFailure('Location permission denied, Allow it and try again.'));
-      } else if (permission == LocationPermission.whileInUse || permission == LocationPermission.always) {
-        SharedPrefs.setBool(kLocationAccessKey, true);
-        emit(LocationPermissionSuccess());
-      }
-    } else {
+    if (isLocationAllowed) {
       emit(LocationPermissionSuccess());
     }
   }

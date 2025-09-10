@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LocationCubit(getIt.get<LocationRepo>()),
+      create: (context) => LocationCubit(getIt.get<LocationRepo>())..checkLocationPermission(),
       child: Scaffold(
         body: IndexedStack(
           index: _currentIndex,

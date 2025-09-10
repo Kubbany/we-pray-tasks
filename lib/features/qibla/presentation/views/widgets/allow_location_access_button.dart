@@ -25,7 +25,7 @@ class AllowLocationAccessButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        context.read<LocationCubit>().checkLocationPermission();
+        context.read<LocationCubit>().requestLocationPermission();
       },
       child: const Text(
         'Allow Location Access',
