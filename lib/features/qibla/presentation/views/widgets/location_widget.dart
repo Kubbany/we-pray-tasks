@@ -28,9 +28,7 @@ class LocationWidget extends StatelessWidget {
           Radius.circular(20),
         ),
       ),
-      child: Center(
-        child: LocationCityName(text: text),
-      ),
+      child: LocationCityName(text: text),
     );
   }
 }

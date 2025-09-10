@@ -22,7 +22,10 @@ class LocationWidgetBlocBuilder extends StatelessWidget {
           text = 'Tap to get your location';
         }
 
-        return LocationWidget(text: text);
+        return InkWell(
+          onTap: () => context.read<LocationCubit>().getCityName(),
+          child: LocationWidget(text: text),
+        );
       },
     );
   }

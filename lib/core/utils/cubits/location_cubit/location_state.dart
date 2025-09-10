@@ -18,3 +18,8 @@ class LocationFailure extends LocationState {
   final String message;
   LocationFailure(this.message);
 }
+
+class LocationPermissionFailure extends LocationState {
+  final String message;
+  LocationPermissionFailure(this.message);
+}

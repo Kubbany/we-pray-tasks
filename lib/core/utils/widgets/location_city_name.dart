@@ -24,6 +24,7 @@ class LocationCityName extends StatelessWidget {
           child: Text(
             text,
             style: color != null ? AppStyles.semiBoldHanken16 : AppStyles.mediumSans14,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],

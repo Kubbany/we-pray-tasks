@@ -13,11 +13,13 @@ class LocationBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LocationCubit, LocationState>(
+      listenWhen: (previous, current) => current is LocationPermissionFailure,
       listener: (context, state) {
-        if (state is LocationFailure) {
+        if (state is LocationPermissionFailure) {
           showSnackBarMessage(context, state.message);
         }
       },
+      buildWhen: (previous, current) => current is LocationPermissionSuccess || current is LocationPermissionFailure,
       builder: (context, state) {
         if (state is LocationPermissionSuccess) {
           return const AllowedLocationWidget();
