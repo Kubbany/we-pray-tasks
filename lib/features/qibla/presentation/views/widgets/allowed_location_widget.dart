@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:we_pray_tasks/core/utils/app_styles.dart';
+import 'package:we_pray_tasks/core/utils/cubits/location_cubit/location_cubit.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/manager/qibla_cubit/qibla_cubit.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/location_widget_bloc_builder.dart';
 import 'package:we_pray_tasks/features/qibla/presentation/views/widgets/qibla_compass_bloc_consumer.dart';
@@ -17,7 +18,7 @@ class _AllowedLocationWidgetState extends State<AllowedLocationWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<QiblaCubit>().getQiblaDirection();
+    _startQiblaCompass();
   }
 
   @override
@@ -41,6 +42,17 @@ class _AllowedLocationWidgetState extends State<AllowedLocationWidget> {
         ),
         QiblaDegreeDicrection(),
       ],
+    );
+  }
+
+  Future<void> _startQiblaCompass() async {
+    Future.microtask(
+      () {
+        if (mounted) {
+          context.read<LocationCubit>().getCityName();
+          context.read<QiblaCubit>().getQiblaDirection();
+        }
+      },
     );
   }
 }

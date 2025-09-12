@@ -17,18 +17,7 @@ class _AllowedLocationPrayersWidgetState extends State<AllowedLocationPrayersWid
   @override
   void initState() {
     super.initState();
-    getPrayers();
-  }
-
-  Future<void> getPrayers() async {
-    Future.microtask(
-      () {
-        if (mounted) {
-          context.read<PrayersCubit>().getCurrentPrayer();
-          context.read<PrayersCubit>().getPrayers(DateTime.now());
-        }
-      },
-    );
+    _getPrayers();
   }
 
   @override
@@ -48,6 +37,17 @@ class _AllowedLocationPrayersWidgetState extends State<AllowedLocationPrayersWid
           ),
         ),
       ],
+    );
+  }
+
+  Future<void> _getPrayers() async {
+    Future.microtask(
+      () {
+        if (mounted) {
+          context.read<PrayersCubit>().getCurrentPrayer();
+          context.read<PrayersCubit>().getPrayers(DateTime.now());
+        }
+      },
     );
   }
 }
