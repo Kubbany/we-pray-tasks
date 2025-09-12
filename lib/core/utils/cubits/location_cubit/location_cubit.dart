@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -33,6 +35,7 @@ class LocationCubit extends Cubit<LocationState> {
 
   Future<void> requestLocationPermission() async {
     final permission = await Geolocator.requestPermission();
+    log(permission.toString());
     if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
       SharedPrefs.setBool(kLocationAccessKey, false);
       emit(LocationPermissionFailure('Location permission denied, Allow it and try again.'));
