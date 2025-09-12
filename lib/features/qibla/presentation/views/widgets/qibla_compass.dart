@@ -18,7 +18,7 @@ class QiblaCompass extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width * 0.76,
         child: TweenAnimationBuilder<double>(
           tween: AngleTween(begin: 0, end: targetRotation),
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 200),
           builder: (context, animatedAngle, child) {
             return Transform.rotate(
               angle: animatedAngle,
