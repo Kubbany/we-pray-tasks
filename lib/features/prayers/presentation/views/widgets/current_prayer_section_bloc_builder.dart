@@ -6,19 +6,8 @@ import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/skelet
 
 import 'current_prayer_section.dart';
 
-class CurrentPrayerSectionBlocBuilder extends StatefulWidget {
+class CurrentPrayerSectionBlocBuilder extends StatelessWidget {
   const CurrentPrayerSectionBlocBuilder({super.key});
-
-  @override
-  State<CurrentPrayerSectionBlocBuilder> createState() => _CurrentPrayerSectionBlocBuilderState();
-}
-
-class _CurrentPrayerSectionBlocBuilderState extends State<CurrentPrayerSectionBlocBuilder> {
-  @override
-  initState() {
-    super.initState();
-    context.read<PrayersCubit>().getCurrentPrayer();
-  }
 
   @override
   Widget build(BuildContext context) {

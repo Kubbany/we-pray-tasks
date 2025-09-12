@@ -6,19 +6,8 @@ import 'package:we_pray_tasks/features/prayers/presentation/managers/prayers_cub
 import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/prayers_time_list_view.dart';
 import 'package:we_pray_tasks/features/prayers/presentation/views/widgets/skeletonizer_prayers.dart';
 
-class PrayerTimeListViewBlocBuilder extends StatefulWidget {
+class PrayerTimeListViewBlocBuilder extends StatelessWidget {
   const PrayerTimeListViewBlocBuilder({super.key});
-
-  @override
-  State<PrayerTimeListViewBlocBuilder> createState() => _PrayerTimeListViewBlocBuilderState();
-}
-
-class _PrayerTimeListViewBlocBuilderState extends State<PrayerTimeListViewBlocBuilder> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<PrayersCubit>().getPrayers(DateTime.now());
-  }
 
   @override
   Widget build(BuildContext context) {

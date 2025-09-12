@@ -16,7 +16,7 @@ class QiblaView extends StatelessWidget {
       create: (context) => QiblaCubit(
         getIt.get<QiblaRepo>(),
         getIt.get<LocationRepo>(),
-      )..getQiblaDirection(),
+      ),
       child: const Scaffold(
         backgroundColor: Color(0xFF28B16D),
         body: QiblaViewBody(),
