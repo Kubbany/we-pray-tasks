@@ -5,4 +5,5 @@ import 'package:we_pray_tasks/features/qibla/domain/entities/location_entity.dar
 abstract class LocationRepo {
   Future<Either<Failure, LocationEntity>> getLocation();
   Future<Either<Failure, String>> getCityName(LocationEntity location);
+  void resetCachedLocation();
 }

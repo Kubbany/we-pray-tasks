@@ -23,7 +23,10 @@ class LocationWidgetBlocBuilder extends StatelessWidget {
         }
 
         return InkWell(
-          onTap: () => context.read<LocationCubit>().getCityName(),
+          onTap: () {
+            context.read<LocationCubit>().resetCachedLocation();
+            context.read<LocationCubit>().getCityName();
+          },
           child: LocationWidget(text: text),
         );
       },

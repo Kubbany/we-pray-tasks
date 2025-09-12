@@ -22,11 +22,17 @@ class CurrentLocation extends StatelessWidget {
         } else {
           text = 'Tap to get your location';
         }
-        return Align(
-          alignment: Alignment.centerLeft,
-          child: LocationCityName(
-            color: Colors.white,
-            text: text,
+        return InkWell(
+          onTap: () {
+            context.read<LocationCubit>().resetCachedLocation();
+            context.read<LocationCubit>().getCityName();
+          },
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: LocationCityName(
+              color: Colors.white,
+              text: text,
+            ),
           ),
         );
       },

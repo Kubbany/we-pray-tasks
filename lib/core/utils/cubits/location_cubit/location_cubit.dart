@@ -31,6 +31,10 @@ class LocationCubit extends Cubit<LocationState> {
     );
   }
 
+  void resetCachedLocation() {
+    _locationRepo.resetCachedLocation();
+  }
+
   Future<void> requestLocationPermission() async {
     final permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {

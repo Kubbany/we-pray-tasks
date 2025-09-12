@@ -7,7 +7,7 @@ class LocationServiceImpl implements LocationService {
   @override
   Future<LocationEntity> getLocation() async {
     Position position = await Geolocator.getCurrentPosition(
-      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
+      locationSettings: const LocationSettings(accuracy: LocationAccuracy.best),
     );
     return LocationEntity(
       latitude: position.latitude,

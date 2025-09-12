@@ -6,12 +6,16 @@ import 'package:we_pray_tasks/features/qibla/domain/entities/location_entity.dar
 
 class LocationRepoImpl implements LocationRepo {
   final LocationService _locationService;
-
+  LocationEntity? cachedLocation;
   LocationRepoImpl(this._locationService);
   @override
   Future<Either<Failure, LocationEntity>> getLocation() async {
+    if (cachedLocation != null) {
+      return Right(cachedLocation!);
+    }
     try {
       final location = await _locationService.getLocation();
+      cachedLocation = location;
       return Right(location);
     } catch (e) {
       return const Left(UnknownFailure('Error fetching location'));
@@ -26,5 +30,10 @@ class LocationRepoImpl implements LocationRepo {
     } catch (e) {
       return const Left(UnknownFailure('Error getting city name'));
     }
+  }
+
+  @override
+  void resetCachedLocation() {
+    cachedLocation = null;
   }
 }
